@@ -1,15 +1,12 @@
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/home/home';
-import Login from './pages/auth/login';
-import Register from './pages/auth/register';
-import Layout from './layout/mainLeyout/layout';
+import { Routes, Route, Navigate, } from 'react-router-dom';
+import LanguageRoutes from './routes/LanguageRoutes';
+
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout children={<Home />} />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<Navigate to="/en" replace />} />
+      <Route path="/:lang/*" element={<LanguageRoutes />} />
     </Routes>
   );
 };

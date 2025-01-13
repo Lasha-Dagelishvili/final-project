@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { supabase } from '@/supabaseClient';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -11,7 +13,7 @@ const Register = () => {
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.auth.signUp({
+    const { error } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -25,16 +27,16 @@ const Register = () => {
 
   return (
     <div className="max-w-md mx-auto mt-32">
-      <h2 className="text-2xl font-bold mb-4">Register</h2>
+      <h2 className="text-2xl font-bold mb-4">{t('register')}</h2>
       <form onSubmit={handleRegister}>
         <div className="mb-4">
           <label htmlFor="email" className="block font-medium mb-1">
-            Email
+            {t('Email')}
           </label>
           <input
             id="email"
             type="email"
-            placeholder="Email"
+            placeholder={t('Email')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border rounded p-2"
@@ -43,12 +45,12 @@ const Register = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block font-medium mb-1">
-            Password
+            {t('Password')}
           </label>
           <input
             id="password"
             type="password"
-            placeholder="Password"
+            placeholder={t('Password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border rounded p-2"
@@ -60,7 +62,7 @@ const Register = () => {
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded"
         >
-          Register
+          {t('register')}
         </button>
       </form>
     </div>
