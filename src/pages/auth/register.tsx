@@ -31,12 +31,12 @@ const Register = () => {
       <form onSubmit={handleRegister}>
         <div className="mb-4">
           <label htmlFor="email" className="block font-medium mb-1">
-            {t('Email')}
+            {t('email')}
           </label>
           <input
             id="email"
             type="email"
-            placeholder={t('Email')}
+            placeholder={t('email')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border rounded p-2"
@@ -45,12 +45,12 @@ const Register = () => {
         </div>
         <div className="mb-4">
           <label htmlFor="password" className="block font-medium mb-1">
-            {t('Password')}
+            {t('password')}
           </label>
           <input
             id="password"
             type="password"
-            placeholder={t('Password')}
+            placeholder={t('password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border rounded p-2"

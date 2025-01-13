@@ -1,11 +1,13 @@
 {
-    "home": "Home",
-    "login": "Login",
-    "register": "Register",
-    "welcome": "Welcome to our website!",
-    "MyWebsite": "My Website. All rights reserved",
-    "Email": "Email",
-    "Password": "Password",
-    "Profile": "Profile",
-    "Logout": "Logout"
+  "welcome": "Welcome to our website!",
+  "MyWebsite": "My Website. All rights reserved",
+  "home": "Home",
+  "login": "Login",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "profile": "Profile",
+  "logout": "Logout",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode"
 }
