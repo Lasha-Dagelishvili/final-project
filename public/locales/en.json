@@ -3,11 +3,12 @@
   "MyWebsite": "My Website. All rights reserved",
   "home": "Home",
   "login": "Login",
+  "logout": "Logout",
   "register": "Register",
   "email": "Email",
   "password": "Password",
   "profile": "Profile",
-  "logout": "Logout",
-  "darkMode": "Dark Mode",
-  "lightMode": "Light Mode"
+  "editProfile": "Edit Profile",
+  "username": "Username",
+  "save_changes": "Save Changes"
 }

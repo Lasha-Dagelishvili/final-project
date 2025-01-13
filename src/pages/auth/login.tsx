@@ -22,7 +22,7 @@ const Login = () => {
     if (error) {
       setError(error.message);
     } else {
-      navigate('/');
+      navigate(`/${lang}/`);
     }
   };
 
@@ -40,7 +40,7 @@ const Login = () => {
             placeholder={t('email')}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded p-2"
+            className="w-full border rounded p-2 text-black"
             required
           />
         </div>
@@ -54,7 +54,7 @@ const Login = () => {
             placeholder={t('password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border rounded p-2"
+            className="w-full border rounded p-2 text-black"
             required
           />
         </div>

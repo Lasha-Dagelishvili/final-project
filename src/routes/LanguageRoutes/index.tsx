@@ -4,6 +4,7 @@ import Login from '@/pages/auth/login';
 import Register from '@/pages/auth/register';
 import Layout from '@/layout/mainLeyout/layout';
 import { useTranslation } from 'react-i18next';
+import Profile from '@/pages/profile';
 
 const LanguageRoutes = () => {
   const { i18n } = useTranslation();
@@ -39,6 +40,7 @@ const LanguageRoutes = () => {
           </Layout>
         }
       />
+      <Route path="/profile" element={<Layout><Profile /></Layout>} />
     </Routes>
   );
 };
