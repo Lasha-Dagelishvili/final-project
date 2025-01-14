@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { supabase } from '@/supabaseClient';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { FaSun, FaMoon } from 'react-icons/fa';
+import { FaSun, FaMoon, FaUserCircle } from 'react-icons/fa';
 import { useTheme } from '@/hooks/useTheme';
 
 const Header = () => {
@@ -49,51 +49,27 @@ const Header = () => {
   return (
     <header className="bg-blue-600 text-white dark:bg-gray-900 dark:text-gray-100 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">
-          <NavLink to={`/${lang}/`} className="hover:underline">
+        <h1 className="text-xl font-bold ml-24">
+          <NavLink to={`/${lang}/`} className="hover:">
             {t('home')}
           </NavLink>
-        </h1>
+        </h1>               
 
+        {/* Navigation Links */}
         <nav>
           <ul className="flex space-x-4">
-            {user ? (
-                <li className="relative">
-                  <button
-                    className="bg-gray-800 px-4 py-2 rounded text-white"
-                    onClick={() => setDropdownOpen(!dropdownOpen)}
-                  >
-                    {username ?? 'Profile'}
-                  </button>
-                  {dropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow">
-                      <NavLink
-                        to={`/${lang}/profile`}
-                        className="block px-4 py-2 hover:bg-gray-200"
-                        onClick={() => setDropdownOpen(false)}
-                      >
-                        {t('editProfile')}
-                      </NavLink>
-                      <button
-                        className="block w-full px-4 py-2 text-left hover:bg-gray-200"
-                        onClick={handleLogout}
-                      >
-                        {t('logout')}
-                      </button>
-                    </div>
-                  )}
-                </li>
-            ) : (
-                <li>
-                  <NavLink to={`/${lang}/login`} className="hover:underline">
-                    {t('login')}
-                  </NavLink>
-                </li>
+            {!user && (
+              <li>
+                <NavLink to={`/${lang}/login`} className="hover:underline">
+                  {t('login')}
+                </NavLink>
+              </li>
             )}
-          </ul>
+          </ul>     
         </nav>
 
         <div className="flex items-center space-x-4">
+          {/* Language Switcher */}
           <button
             className="bg-gray-800 px-4 py-2 rounded text-white"
             onClick={() => handleLanguageChange('en')}
@@ -106,6 +82,42 @@ const Header = () => {
           >
             KA
           </button>
+
+          {/* Profile Icon */}
+          {user && (
+            <div className="relative">
+              <button
+                className="flex items-center space-x-2 bg-gray-800 px-4 py-2 rounded text-white"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+              >
+                <FaUserCircle className="h-5 w-5" />
+              </button>
+
+              {/* Dropdown Menu */}
+              {dropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow">
+                  <div className="px-4 py-2 border-b">
+                    <span className="font-semibold">{username}</span>
+                  </div>
+                  <NavLink
+                    to={`/${lang}/profile`}
+                    className="block px-4 py-2 hover:bg-gray-200"
+                    onClick={() => setDropdownOpen(false)}
+                  >
+                    {t('editProfile')}
+                  </NavLink>
+                  <button
+                    className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                    onClick={handleLogout}
+                  >
+                    {t('logout')}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Theme Toggle */}
           <button
             className="bg-gray-800 text-white dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded flex items-center justify-center"
             onClick={toggleTheme}
