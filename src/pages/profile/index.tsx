@@ -7,7 +7,10 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const schema = z.object({
-  email: z.string().email({ message: 'Invalid email address' }).nonempty({ message: 'Email is required' }),
+  email: z
+    .string()
+    .email({ message: 'Invalid email address' })
+    .nonempty({ message: 'Email is required' }),
   username: z
     .string()
     .min(3, { message: 'Username must be at least 3 characters long' })
@@ -43,7 +46,6 @@ const Profile = () => {
             .single();
 
           if (error) throw error;
-          // Reset the form only once after fetching data
           reset({
             email: user.email ?? '',
             username: data?.username || '',
@@ -93,7 +95,9 @@ const Profile = () => {
               errors.email ? 'border-red-500' : ''
             }`}
           />
-          {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
+          {errors.email && (
+            <p className="text-red-500 mt-1">{errors.email.message}</p>
+          )}
         </div>
 
         {/* Username Field */}

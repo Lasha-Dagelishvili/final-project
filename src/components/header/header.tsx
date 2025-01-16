@@ -53,7 +53,7 @@ const Header = () => {
           <NavLink to={`/${lang}/`} className="hover:">
             {t('home')}
           </NavLink>
-        </h1>               
+        </h1>
 
         {/* Navigation Links */}
         <nav>
@@ -65,7 +65,7 @@ const Header = () => {
                 </NavLink>
               </li>
             )}
-          </ul>     
+          </ul>
         </nav>
 
         <div className="flex items-center space-x-4">
@@ -95,7 +95,7 @@ const Header = () => {
 
               {/* Dropdown Menu */}
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white text-black rounded shadow">
+                <div className="absolute z-10 right-0 mt-2 w-48 bg-white text-black rounded shadow">
                   <div className="px-4 py-2 border-b">
                     <span className="font-semibold">{username}</span>
                   </div>
