@@ -6,6 +6,7 @@ export const ROUTES = {
   REGISTER: '/register',
   PROFILE: '/profile',
   NOT_FOUND: '*',
+  PRODUCTS: '/products'
 };
 
 export const PAGES = {
@@ -14,4 +15,5 @@ export const PAGES = {
   Register: lazy(() => import('@/pages/auth/register')),
   Profile: lazy(() => import('@/pages/profile')),
   NotFound: lazy(() => import('@/pages/not-found')),
+  ProductsPage: lazy(() => import('@/pages/products/products-page')),
 };

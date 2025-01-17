@@ -13,5 +13,13 @@
   "save_changes": "Save Changes",
   "hero_heading": "Discover New Furniture Concepts",
   "hero_subheading": "Explore modern and professional furniture designed to fit your unique style and comfort.",
-  "cta_button": "Browse Now"
+  "cta_button": "Browse Now",
+  "view_all": "View All",
+  "offers": "Offers",
+  "products": "Products",
+  "purchase": "Purchase",
+  "not_found": "Oops! Page not found.",
+  "page_doesnot_exist": "The page you are looking for doesn’t exist or has been moved.",
+  "go_back_home": "Go Back Home"
+
 }

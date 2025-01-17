@@ -9,7 +9,7 @@ const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
       <Navigate
         to="/login"
         replace
-        state = {{ message: 'Please log in to access this page' }}
+        state={{ message: 'Please log in to access this page' }}
       />
     );
   }

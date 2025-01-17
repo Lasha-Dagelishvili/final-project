@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { supabase } from '@/supabaseClient';
 import { useState, useEffect } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { FaSun, FaMoon, FaUserCircle } from 'react-icons/fa';
+import { FaSun, FaMoon, FaUserCircle, FaBars, FaTimes } from 'react-icons/fa';
 import { useTheme } from '@/hooks/useTheme';
 
 const Header = () => {
@@ -15,6 +15,7 @@ const Header = () => {
   const { theme, toggleTheme } = useTheme();
   const [username, setUsername] = useState<string | null>(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -47,27 +48,46 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-blue-600 text-white dark:bg-gray-900 dark:text-gray-100 p-4">
+    <header className="bg-gray-300 dark:bg-gray-900 dark:text-gray-100 p-4">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold ml-24">
-          <NavLink to={`/${lang}/`} className="hover:">
+        <h1 className="text-xl font-bold">
+          <NavLink to={`/${lang}`} className="">
             {t('home')}
           </NavLink>
         </h1>
 
+        {/* Hamburger Menu for Mobile */}
+        <button
+          className="md:hidden bg-gray-800 text-white px-3 py-2 rounded"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          {menuOpen ? <FaTimes className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
+        </button>
+
         {/* Navigation Links */}
-        <nav>
-          <ul className="flex space-x-4">
-            {!user && (
-              <li>
-                <NavLink to={`/${lang}/login`} className="hover:underline">
-                  {t('login')}
-                </NavLink>
-              </li>
-            )}
-          </ul>
+        <nav
+          className={`${
+            menuOpen ? 'block' : 'hidden'
+          } md:flex md:items-center space-x-4 md:space-x-6 mt-4 md:mt-0`}
+        >
+          {!user && (
+            <NavLink
+              to={`/${lang}/login`}
+              className="block md:inline text-black dark:text-white"
+            >
+              {t('login')}
+            </NavLink>
+          )}
+
+          <NavLink
+            to={`/${lang}/products`}
+            className="block md:inline text-black dark:text-white"
+          >
+            {t('products')}
+          </NavLink>
         </nav>
 
+        {/* Right-Side Controls */}
         <div className="flex items-center space-x-4">
           {/* Language Switcher */}
           <button

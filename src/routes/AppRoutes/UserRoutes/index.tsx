@@ -7,7 +7,7 @@ import ProtectedRoute from '@/router-guards/ProtectedRoute';
 import { useAuth } from '@/hooks/useAuth';
 import { Loading } from '@/router-guards/loading';
 
-const { Home, Login, Register, Profile, NotFound } = PAGES;
+const { Home, Login, Register, Profile, NotFound, ProductsPage } = PAGES;
 
 const UserRoutes = () => {
   const { user } = useAuth();
@@ -64,6 +64,14 @@ const UserRoutes = () => {
           element={
             <Layout>
               <NotFound />
+            </Layout>
+          }
+        />
+        <Route
+          path={ROUTES.PRODUCTS}
+          element={
+            <Layout>
+              <ProductsPage />
             </Layout>
           }
         />
