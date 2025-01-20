@@ -3,15 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const NotFoundPage: React.FC = () => {
-    const { t } = useTranslation();
-  
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
   const { lang } = useParams<{ lang: string }>();
 
-
   return (
     <section className="flex flex-col items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900 text-center">
-      <h1 className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-4">404</h1>
+      <h1 className="text-6xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+        404
+      </h1>
       <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-4">
         {t('not_found')}
       </h2>

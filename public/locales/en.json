@@ -20,6 +20,7 @@
   "purchase": "Purchase",
   "not_found": "Oops! Page not found.",
   "page_doesnot_exist": "The page you are looking for doesn’t exist or has been moved.",
-  "go_back_home": "Go Back Home"
-
+  "go_back_home": "Go Back Home",
+  "successful": "Payment Successful!",
+  "canceled": "Payment Canceled!"
 }

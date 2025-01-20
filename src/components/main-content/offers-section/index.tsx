@@ -5,14 +5,17 @@ import { NavLink, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const OffersSection: React.FC = () => {
-    const { t } = useTranslation();
-    const { lang } = useParams<{ lang: string }>();
-    
+  const { t } = useTranslation();
+  const { lang } = useParams<{ lang: string }>();
+
   return (
     <div className="py-8">
       <div className="flex justify-between items-center mb-4 px-4">
         <h2 className="text-2xl font-bold">{t('offers')}</h2>
-        <NavLink  className="text-blue-600 dark:text-blue-400 " to={`/${lang}/products`}>
+        <NavLink
+          className="text-blue-600 dark:text-blue-400 "
+          to={`/${lang}/products`}
+        >
           {t('view_all')}
         </NavLink>
       </div>

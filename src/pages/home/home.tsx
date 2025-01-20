@@ -4,11 +4,37 @@ import HeroSection from '@/components/main-content/hero-section';
 import OffersSection from '@/components/main-content/offers-section';
 import { useTranslation } from 'react-i18next';
 import { mainpage_products } from '@/data/products/mainpage-products';
+import { products } from '@/data/products';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
-  const handlePurchase = (productId: string) => {
-    alert(`Product with ID ${productId} purchased!`);
+  const handlePurchase = async (productId: string) => {
+    const product = products.find((item) => item.id === productId);
+
+    if (!product) return;
+
+    try {
+      const response = await fetch('http://localhost:4242/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: [
+            {
+              name: product.name,
+              price: product.price,
+              image: product.image,
+            },
+          ],
+        }),
+      });
+
+      const { url } = await response.json();
+      window.location.href = url;
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (

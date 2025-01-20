@@ -61,7 +61,11 @@ const Header = () => {
           className="md:hidden bg-gray-800 text-white px-3 py-2 rounded"
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? <FaTimes className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
+          {menuOpen ? (
+            <FaTimes className="h-5 w-5" />
+          ) : (
+            <FaBars className="h-5 w-5" />
+          )}
         </button>
 
         {/* Navigation Links */}
@@ -73,7 +77,7 @@ const Header = () => {
           {!user && (
             <NavLink
               to={`/${lang}/login`}
-              className="block md:inline text-black dark:text-white"
+              className="block md:inline text-black dark:text-white text-xl font-bold"
             >
               {t('login')}
             </NavLink>
@@ -81,7 +85,7 @@ const Header = () => {
 
           <NavLink
             to={`/${lang}/products`}
-            className="block md:inline text-black dark:text-white"
+            className="block md:inline text-black dark:text-white text-xl font-bold"
           >
             {t('products')}
           </NavLink>

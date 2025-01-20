@@ -6,7 +6,9 @@ export const ROUTES = {
   REGISTER: '/register',
   PROFILE: '/profile',
   NOT_FOUND: '*',
-  PRODUCTS: '/products'
+  PRODUCTS: '/products',
+  SUCCESS: '/success',
+  CANCEL: '/cancel',
 };
 
 export const PAGES = {
@@ -16,4 +18,6 @@ export const PAGES = {
   Profile: lazy(() => import('@/pages/profile')),
   NotFound: lazy(() => import('@/pages/not-found')),
   ProductsPage: lazy(() => import('@/pages/products/products-page')),
+  SuccessPage: lazy(() => import('@/components/payout/success')),
+  CancelPage: lazy(() => import('@/components/payout/cancel'))
 };

@@ -1,13 +1,13 @@
 import { Routes, Route, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { ROUTES, PAGES } from '@/routes/routesConfig';
 import Layout from '@/layout/mainLeyout/layout';
-import ProtectedRoute from '@/router-guards/ProtectedRoute';
 import { useAuth } from '@/hooks/useAuth';
-import { Loading } from '@/router-guards/loading';
+import ProtectedRoute from '@/router-guards/protected-route';
+import GuestGuard from '@/router-guards/guest-guard';
 
-const { Home, Login, Register, Profile, NotFound, ProductsPage } = PAGES;
+const { Home, Login, Register, Profile, NotFound, ProductsPage, SuccessPage, CancelPage } = PAGES;
 
 const UserRoutes = () => {
   const { user } = useAuth();
@@ -21,8 +21,23 @@ const UserRoutes = () => {
   }, [lang, i18n]);
 
   return (
-    <Suspense fallback={<Loading />}>
       <Routes>
+        <Route
+          path={ROUTES.SUCCESS}
+          element={
+            <Layout>
+              <SuccessPage />
+            </Layout>
+          }
+        />
+        <Route
+          path={ROUTES.CANCEL}
+          element={
+            <Layout>
+              <CancelPage />
+            </Layout>
+          }
+        />
         <Route
           path={ROUTES.HOME}
           element={
@@ -35,7 +50,9 @@ const UserRoutes = () => {
           path={ROUTES.LOGIN}
           element={
             <Layout>
-              <Login />
+              <GuestGuard>
+                <Login />
+              </GuestGuard>
             </Layout>
           }
         />
@@ -43,7 +60,9 @@ const UserRoutes = () => {
           path={ROUTES.REGISTER}
           element={
             <Layout>
-              <Register />
+              <GuestGuard>
+                <Register />
+              </GuestGuard>
             </Layout>
           }
         />
@@ -76,7 +95,6 @@ const UserRoutes = () => {
           }
         />
       </Routes>
-    </Suspense>
   );
 };
 
