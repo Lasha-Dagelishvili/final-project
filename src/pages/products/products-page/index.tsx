@@ -14,7 +14,10 @@ const ProductsPage: React.FC = () => {
   // Get current page products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+  const currentProducts = products.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct,
+  );
 
   const handlePurchase = async (productId: string) => {
     const product = products.find((item) => item.id === productId);
@@ -38,7 +41,7 @@ const ProductsPage: React.FC = () => {
               },
             ],
           }),
-        }
+        },
       );
 
       if (!response.ok) {

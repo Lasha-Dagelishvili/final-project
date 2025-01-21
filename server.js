@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import Stripe from 'stripe';
 
 const app = express();
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', { apiVersion: '2022-11-15' });
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', {
+  apiVersion: '2022-11-15',
+});
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,4 +41,6 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 const PORT = process.env.PORT || 4242;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`),
+);
