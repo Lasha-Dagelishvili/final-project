@@ -4,9 +4,7 @@ import bodyParser from 'body-parser';
 import Stripe from 'stripe';
 
 const app = express();
-const stripe = new Stripe(
-  'sk_test_51QiiTNLBMNfIO9EfMTVhvwvKD8BHzem1IuStjAY0A5IeKGZUmV9UQPeLakEhGW2dtbkA7HxdI39N7x2CkObtAw3v00OIw2SF98',
-);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || '', { apiVersion: '2022-11-15' });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -24,13 +22,13 @@ app.post('/create-checkout-session', async (req, res) => {
             name: item.name,
             images: [item.image],
           },
-          unit_amount: item.price * 100,
+          unit_amount: Math.round(item.price * 100),
         },
         quantity: 1,
       })),
       mode: 'payment',
-      success_url: 'http://localhost:5173/success',
-      cancel_url: 'http://localhost:5173/cancel',
+      success_url: `${process.env.FRONTEND_URL}/success`,
+      cancel_url: `${process.env.FRONTEND_URL}/cancel`,
     });
 
     res.status(200).json({ url: session.url });
@@ -40,7 +38,5 @@ app.post('/create-checkout-session', async (req, res) => {
   }
 });
 
-const PORT = 4242;
-app.listen(PORT, () =>
-  console.log(`Server running on http://localhost:${PORT}`),
-);
+const PORT = process.env.PORT || 4242;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

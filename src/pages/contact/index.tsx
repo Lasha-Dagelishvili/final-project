@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+} from 'react-icons/fa';
 
 const Contact: React.FC = () => {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const [formData, setFormData] = useState({
     name: '',
@@ -14,17 +21,18 @@ const Contact: React.FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form data here (e.g., send to backend)
     console.log('Form Data Submitted:', formData);
-    setSubmitted(true); // Indicate successful submission
-    setFormData({ name: '', email: '', subject: '', message: '' }); // Clear form
+    setSubmitted(true);
+    setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
   return (
@@ -34,7 +42,9 @@ const Contact: React.FC = () => {
         <div>
           <h1 className="text-3xl font-bold mb-6">{t('contact_us')}</h1>
           {submitted && (
-            <p className="mb-4 text-green-600 font-medium">{t('thanks_for_message')}</p>
+            <p className="mb-4 text-green-600 font-medium">
+              {t('thanks_for_message')}
+            </p>
           )}
           <form className="grid grid-cols-1 gap-6" onSubmit={handleSubmit}>
             <div>
@@ -109,9 +119,7 @@ const Contact: React.FC = () => {
         {/* Contact Information Section */}
         <div className="flex flex-col justify-center">
           <h2 className="text-2xl font-bold mb-4">{t('get_in_touch')}</h2>
-          <p className="mb-4">
-            {t('contact_for_anything')}
-          </p>
+          <p className="mb-4">{t('contact_for_anything')}</p>
           <div className="space-y-4">
             <div className="flex items-center space-x-4">
               <FaPhoneAlt className="text-blue-600 dark:text-blue-400" />

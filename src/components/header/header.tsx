@@ -50,10 +50,9 @@ const Header = () => {
   return (
     <header className="bg-gray-300 dark:bg-gray-900 dark:text-gray-100 p-4 shadow-md z-10">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold hover:text-gray-400">
+        <h1 className="text-xl ml-16 font-bold hover:text-gray-400">
           <NavLink to={`/${lang}`}>{t('home')}</NavLink>
         </h1>
-
         {/* Navigation Links - Centered for Desktop */}
         <nav className="hidden md:flex md:justify-center md:items-center md:space-x-6">
           <NavLink
@@ -81,13 +80,13 @@ const Header = () => {
         {/* Right-Side Controls for Desktop */}
         <div className="hidden md:flex items-center space-x-4">
           <button
-            className="bg-gray-800 px-4 py-2 rounded text-white"
+            className="bg-gray-800 px-4 py-2 rounded hover:text-gray-400 text-white"
             onClick={() => handleLanguageChange('en')}
           >
             EN
           </button>
           <button
-            className="bg-gray-800 px-4 py-2 rounded text-white"
+            className="bg-gray-800 px-4 py-2 rounded hover:text-gray-400 text-white"
             onClick={() => handleLanguageChange('ka')}
           >
             KA

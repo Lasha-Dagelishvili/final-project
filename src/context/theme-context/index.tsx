@@ -7,4 +7,6 @@ export interface ThemeContextType {
 
 import { createContext } from 'react';
 
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined,
+);

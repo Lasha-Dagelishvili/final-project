@@ -16,7 +16,7 @@ const {
   ProductsPage,
   SuccessPage,
   CancelPage,
-  Contact
+  Contact,
 } = PAGES;
 
 const UserRoutes = () => {
@@ -104,12 +104,13 @@ const UserRoutes = () => {
           </Layout>
         }
       />
-      <Route path={ROUTES.CONTACT}
+      <Route
+        path={ROUTES.CONTACT}
         element={
           <Layout>
             <Contact />
           </Layout>
-        } 
+        }
       />
     </Routes>
   );

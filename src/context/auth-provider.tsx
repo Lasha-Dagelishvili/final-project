@@ -4,7 +4,9 @@ import type { User } from '@supabase/supabase-js';
 import { useNavigate, useParams } from 'react-router-dom';
 import { AuthContextType, AuthContext } from './auth-context';
 
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
   const { lang } = useParams<{ lang: string }>();
@@ -25,9 +27,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     getUser();
 
-    const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user || null);
-    });
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setUser(session?.user || null);
+      },
+    );
 
     return () => {
       subscription.subscription.unsubscribe();
@@ -36,7 +40,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const value = useMemo<AuthContextType>(
     () => ({ user, setUser, logout }),
-    [user, logout]
+    [user, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
