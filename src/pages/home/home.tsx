@@ -14,21 +14,24 @@ const Home: React.FC = () => {
     if (!product) return;
 
     try {
-      const response = await fetch('http://localhost:4242/create-checkout-session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        'http://localhost:4242/create-checkout-session',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            items: [
+              {
+                name: product.name,
+                price: product.price,
+                image: product.image,
+              },
+            ],
+          }),
         },
-        body: JSON.stringify({
-          items: [
-            {
-              name: product.name,
-              price: product.price,
-              image: product.image,
-            },
-          ],
-        }),
-      });
+      );
 
       const { url } = await response.json();
       window.location.href = url;

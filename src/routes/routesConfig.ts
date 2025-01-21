@@ -19,5 +19,5 @@ export const PAGES = {
   NotFound: lazy(() => import('@/pages/not-found')),
   ProductsPage: lazy(() => import('@/pages/products/products-page')),
   SuccessPage: lazy(() => import('@/components/payout/success')),
-  CancelPage: lazy(() => import('@/components/payout/cancel'))
+  CancelPage: lazy(() => import('@/components/payout/cancel')),
 };

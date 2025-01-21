@@ -4,7 +4,9 @@ import bodyParser from 'body-parser';
 import Stripe from 'stripe';
 
 const app = express();
-const stripe = new Stripe('sk_test_51QiiTNLBMNfIO9EfMTVhvwvKD8BHzem1IuStjAY0A5IeKGZUmV9UQPeLakEhGW2dtbkA7HxdI39N7x2CkObtAw3v00OIw2SF98');
+const stripe = new Stripe(
+  'sk_test_51QiiTNLBMNfIO9EfMTVhvwvKD8BHzem1IuStjAY0A5IeKGZUmV9UQPeLakEhGW2dtbkA7HxdI39N7x2CkObtAw3v00OIw2SF98',
+);
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,4 +41,6 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 const PORT = 4242;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server running on http://localhost:${PORT}`),
+);

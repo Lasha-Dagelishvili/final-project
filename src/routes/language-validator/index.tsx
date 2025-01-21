@@ -3,7 +3,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import UserRoutes from '../AppRoutes/UserRoutes';
 
-const supportedLanguages = ['en', 'ka']; 
+const supportedLanguages = ['en', 'ka'];
 
 const LanguageValidator = () => {
   const { lang } = useParams<{ lang: string }>();

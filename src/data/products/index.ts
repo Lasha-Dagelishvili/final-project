@@ -1,5 +1,4 @@
 export const products = [
- 
   {
     id: '1',
     name: 'Product A',
@@ -35,5 +34,4 @@ export const products = [
     image:
       'https://images.unsplash.com/photo-1542831371-d531d36971e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=300&h=200',
   },
-
 ];

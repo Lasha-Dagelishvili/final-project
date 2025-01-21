@@ -48,9 +48,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-gray-300 dark:bg-gray-900 dark:text-gray-100 p-4">
+    <header className="bg-gray-300 dark:bg-gray-900 dark:text-gray-100 p-4 shadow-md z-10 pl-16">
       <div className="container mx-auto flex justify-between items-center">
-        <h1 className="text-xl font-bold">
+        {/* Logo */}
+        <h1 className="text-xl font-bold hover:text-gray-400">
           <NavLink to={`/${lang}`} className="">
             {t('home')}
           </NavLink>
@@ -68,50 +69,53 @@ const Header = () => {
           )}
         </button>
 
-        {/* Navigation Links */}
-        <nav
-          className={`${
-            menuOpen ? 'block' : 'hidden'
-          } md:flex md:items-center space-x-4 md:space-x-6 mt-4 md:mt-0`}
-        >
+        <div>
+        <NavLink
+            to={`/${lang}/products`}
+            className="block md:inline text-xl font-bold hover:text-gray-400"
+          >
+            {t('products')}
+          </NavLink>
+
           {!user && (
             <NavLink
               to={`/${lang}/login`}
-              className="block md:inline text-black dark:text-white text-xl font-bold"
+              className="block md:inline text-xl font-bold hover:text-gray-400"
             >
               {t('login')}
             </NavLink>
           )}
+        </div>
 
-          <NavLink
-            to={`/${lang}/products`}
-            className="block md:inline text-black dark:text-white text-xl font-bold"
-          >
-            {t('products')}
-          </NavLink>
-        </nav>
 
-        {/* Right-Side Controls */}
-        <div className="flex items-center space-x-4">
+        {/* Navigation Links */}
+        <nav
+          className={`${
+            menuOpen ? 'absolute top-16 left-0 w-full bg-gray-800 text-white shadow-lg rounded-md p-4 space-y-4' : 'hidden'
+          } md:flex md:items-center md:space-x-4 md:space-y-0`}
+        >
+
           {/* Language Switcher */}
-          <button
-            className="bg-gray-800 px-4 py-2 rounded text-white"
-            onClick={() => handleLanguageChange('en')}
-          >
-            EN
-          </button>
-          <button
-            className="bg-gray-800 px-4 py-2 rounded text-white"
-            onClick={() => handleLanguageChange('ka')}
-          >
-            KA
-          </button>
+          <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2">
+            <button
+              className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-white"
+              onClick={() => handleLanguageChange('en')}
+            >
+              EN
+            </button>
+            <button
+              className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-white"
+              onClick={() => handleLanguageChange('ka')}
+            >
+              KA
+            </button>
+          </div>
 
-          {/* Profile Icon */}
+          {/* Profile Dropdown */}
           {user && (
             <div className="relative">
               <button
-                className="flex items-center space-x-2 bg-gray-800 px-4 py-2 rounded text-white"
+                className="flex items-center space-x-2 hover:bg-gray-600 bg-gray-700 px-4 py-2 rounded text-white"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <FaUserCircle className="h-5 w-5" />
@@ -143,7 +147,7 @@ const Header = () => {
 
           {/* Theme Toggle */}
           <button
-            className="bg-gray-800 text-white dark:bg-gray-700 dark:text-gray-200 px-4 py-2 rounded flex items-center justify-center"
+            className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded flex items-center justify-center"
             onClick={toggleTheme}
           >
             {theme === 'light' ? (
@@ -152,7 +156,7 @@ const Header = () => {
               <FaSun className="h-5 w-5 text-yellow-400" />
             )}
           </button>
-        </div>
+        </nav>
       </div>
     </header>
   );
