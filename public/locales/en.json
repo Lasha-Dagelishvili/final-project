@@ -22,5 +22,18 @@
   "page_doesnot_exist": "The page you are looking for doesn’t exist or has been moved.",
   "go_back_home": "Go Back Home",
   "successful": "Payment Successful!",
-  "canceled": "Payment Canceled!"
+  "canceled": "Payment Canceled!",
+  "contact_us": "Contact Us",
+  "thanks_for_message": "Thank you! Your message has been sent.",
+  "get_in_touch": "Get in Touch",
+  "contact_for_anything": "We'd love to hear from you! Contact us for any inquiries, feedback, or support.",
+  "follow_us": "Follow us on",
+  "name": "Name",
+  "your_name": "Your Name",
+  "your_email": "Your Email",
+  "subject": "Subject",
+  "message": "Message",
+  "your_message": "Your Message",
+  "submit": "Submit"
+
 }

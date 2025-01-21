@@ -1,15 +1,5 @@
-import React, { createContext, useEffect, useMemo, useState } from 'react';
-
-type Theme = 'light' | 'dark';
-
-interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
-export const ThemeContext = createContext<ThemeContextType | undefined>(
-  undefined,
-);
+import React, { useEffect, useMemo, useState } from 'react';
+import { Theme, ThemeContext } from './theme-context';
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(() => {
@@ -31,7 +21,6 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
-  // Memoize the value to avoid re-creating the object on every render
   const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
   return (

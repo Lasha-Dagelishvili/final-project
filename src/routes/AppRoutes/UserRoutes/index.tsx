@@ -16,6 +16,7 @@ const {
   ProductsPage,
   SuccessPage,
   CancelPage,
+  Contact
 } = PAGES;
 
 const UserRoutes = () => {
@@ -102,6 +103,13 @@ const UserRoutes = () => {
             <ProductsPage />
           </Layout>
         }
+      />
+      <Route path={ROUTES.CONTACT}
+        element={
+          <Layout>
+            <Contact />
+          </Layout>
+        } 
       />
     </Routes>
   );

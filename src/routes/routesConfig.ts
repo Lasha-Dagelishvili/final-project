@@ -9,6 +9,7 @@ export const ROUTES = {
   PRODUCTS: '/products',
   SUCCESS: '/success',
   CANCEL: '/cancel',
+  CONTACT: '/contact',
 };
 
 export const PAGES = {
@@ -20,4 +21,5 @@ export const PAGES = {
   ProductsPage: lazy(() => import('@/pages/products/products-page')),
   SuccessPage: lazy(() => import('@/components/payout/success')),
   CancelPage: lazy(() => import('@/components/payout/cancel')),
+  Contact: lazy(() => import('@/pages/contact'))
 };
